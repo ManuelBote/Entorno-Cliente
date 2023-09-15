@@ -112,6 +112,7 @@ function inicio(){
         const listaComponentes = document.getElementsByClassName("caja");
         for(let item of listaComponentes){
             item.context = prompt("Teclea un numero entre 1 y 100");
+            
         }
     }
 }
