@@ -8,6 +8,8 @@ function inicio(){
     document.getElementById("btn4").addEventListener("click", funcion4);
     document.getElementById("btn5").addEventListener("click", funcion5);
     document.getElementById("btn6").addEventListener("click", funcion6);
+    document.getElementById("btn7").addEventListener("click", funcion7);
+    document.getElementById("btn8").addEventListener("click", funcion8);
 
     function funcion1(){
         let numero1=Math.round(Math.random()*100);
@@ -83,5 +85,33 @@ function inicio(){
         caja5.innerText = ("Intentos: " + cont);
         caja5.style.backgroundColor = "Orange";
         
+    }
+
+    function funcion6(){
+        const fecha = new Date();
+        const anio = fecha.getFullYear();
+        const mes = fecha.getMonth();
+        const dia = fecha.getDate();
+        const hora = fecha.getHours();
+        const min = fecha.getMinutes();
+
+        document.getElementById("c6").innerText = hora + ":" + min + "\n" + dia + "/" + mes + "/" + anio;
+    }
+
+    function funcion7(){
+        console.log("Funcion 7");
+
+        const listaComponentes=document.getElementsByClassName("caja");
+        for(let item of listaComponentes){
+            item.textContent = Math.round(Math.random()*100);
+        }
+
+    }
+
+    function funcion8(){
+        const listaComponentes = document.getElementsByClassName("caja");
+        for(let item of listaComponentes){
+            item.context = prompt("Teclea un numero entre 1 y 100");
+        }
     }
 }
