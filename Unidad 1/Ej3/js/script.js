@@ -1,6 +1,13 @@
 window.onload=inicio;
 
 function inicio(){
+
+    let caja1 = document.getElementById("c1");
+    let caja2 = document.getElementById("c2");
+    let caja3 = document.getElementById("c3");
+    let caja4 = document.getElementById("c4");
+
+
     document.getElementById("btn1").onclick=funcion1;
     document.getElementById("btn2").onclick=funcion2;
     document.getElementById("btn3").onclick=funcion3;
@@ -75,6 +82,7 @@ function inicio(){
         console.log("Funcion6 - Cuenta atras");
         let caja = document.getElementById("c1");
         let num = 10;
+        let puntuacion = 0;
         cuenta = setInterval(cuentaAtras, 1000);
 
         function cuentaAtras(){
@@ -92,23 +100,22 @@ function inicio(){
         let btn7 = document.getElementById("btn7");
         btn7.disabled=true;
         const color = ["Red", "Blue", "Green", "Yellow"];
-        let caja1 = document.getElementById("c1");
-        let caja2 = document.getElementById("c2");
-        let caja3 = document.getElementById("c3");
-        let caja4 = document.getElementById("c4");
-        let num = 0;
+        
+        let num = 30;
 
-        colores = setInterval(colores, 500);
+        
+
+        colors = setInterval(colores, 500);
         tiempo = setInterval(temporizador, 1000);
 
         function temporizador(){
             caja4.textContent = num;
-            if(num == 30){
+            if(num == 0){
                 btn7.disabled=false;
                 clearInterval(tiempo);
-                clearInterval(colores);
+                clearInterval(colors);                  
             }
-            num++;
+            num--;
         }
 
         function colores(){
@@ -119,18 +126,25 @@ function inicio(){
             caja1.style.backgroundColor = color[num1];
             caja2.style.backgroundColor = color[num2];
 
-            let puntuacion = 0;
-            caja3.textContent = "Puntiacion: " + puntuacion;
+            
 
-            document.getElementById("c1").onclick = entrar;
-            document.getElementById("c2").onclick = entrar;
-
-            function entrar(puntuacion){
-                if(num1 == num2){puntuacion++;} else {puntuacion--;};
-
-            }
         }
+
         
+
+        
+        
+    }
+
+    function funcion8(){
+        var puntuacion = 0;
+        caja1.onclick=entrar;
+
+        function entrar(){
+            if(num1 == num2) puntuacion++;
+            else puntuacion--;
+            caja3.textContent = "Puntiacion: " + puntuacion;
+        }
     }
 
 
