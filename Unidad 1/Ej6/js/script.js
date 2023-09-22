@@ -79,6 +79,7 @@ function cargarOperacion(){
     } else{
         final=num1/num2;
     }
+    console.log(final);
 }
 
 function mostrarTiempo(){
@@ -87,7 +88,6 @@ function mostrarTiempo(){
 
 function puntuaje(){
     var texto = resul.value;
-    console.log(final);
     console.log(texto);
     if(texto==final){
         aciertos++;
