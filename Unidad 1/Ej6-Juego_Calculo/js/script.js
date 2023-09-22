@@ -44,8 +44,8 @@ function jugar(){
     contador=setInterval(accion,1000);
     function accion(){
         //console.log(tiempo);
-        mostrarTiempo();
         tiempo--;
+        mostrarTiempo();
         if(tiempo==0){
             btnComprobar.disabled=true;
             btnJugar.disabled=false;
@@ -93,9 +93,11 @@ function puntuaje(){
         aciertos++;
         cargarOperacion();
         cargarPuntuacion();
+        resul.textContent="0";
     }else{
         fallos++;
         cargarPuntuacion();
+        resul.textContent="0";
     }
 }
 
