@@ -37,6 +37,7 @@ function inicio(){
         
         btnComprobar.onclick=puntuaje;
     
+<<<<<<< HEAD:Unidad 1/Ej6/js/script.js
         btnParar.onclick=parar;
     
         contador=setInterval(accion,1000);
@@ -76,12 +77,30 @@ function inicio(){
             final=num1*num2;
         } else{
             final=num1/num2;
+=======
+    btnComprobar.onclick=puntuaje;
+
+    btnParar.onclick=parar;
+
+    contador=setInterval(accion,1000);
+    function accion(){
+        //console.log(tiempo);
+        tiempo--;
+        mostrarTiempo();
+        if(tiempo==0){
+            btnComprobar.disabled=true;
+            btnJugar.disabled=false;
+            btnParar.disabled=true;
+            alert("FIN DEL JUEGO");
+            clearInterval(contador);
+>>>>>>> 96ae52636148decba78b4e49a776975696eaa931:Unidad 1/Ej6-Juego_Calculo/js/script.js
         }
     }
     
     function mostrarTiempo(){
         temp.textContent= "Tiempo: " + tiempo;
     }
+<<<<<<< HEAD:Unidad 1/Ej6/js/script.js
     
     function puntuaje(){
         var texto = resul.value;
@@ -95,6 +114,27 @@ function inicio(){
             fallos++;
             cargarPuntuacion();
         }
+=======
+    console.log(final);
+}
+
+function mostrarTiempo(){
+    temp.textContent= "Tiempo: " + tiempo;
+}
+
+function puntuaje(){
+    var texto = resul.value;
+    console.log(texto);
+    if(texto==final){
+        aciertos++;
+        cargarOperacion();
+        cargarPuntuacion();
+        resul.textContent="0";
+    }else{
+        fallos++;
+        cargarPuntuacion();
+        resul.textContent="0";
+>>>>>>> 96ae52636148decba78b4e49a776975696eaa931:Unidad 1/Ej6-Juego_Calculo/js/script.js
     }
     
     function parar(){
