@@ -25,88 +25,89 @@ function inicio(){
     btnParar.disabled=true;
     btnJugar.onclick=jugar;
 
-}
-
-function jugar(){
-    tiempo=60;
-    aciertos = 0;
-    fallos = 0;
-    btnComprobar.disabled=false;
-    btnParar.disabled=false;
-    btnJugar.disabled=true;
-    cargarPuntuacion();
-    cargarOperacion();
+    function jugar(){
+        tiempo=60;
+        aciertos = 0;
+        fallos = 0;
+        btnComprobar.disabled=false;
+        btnParar.disabled=false;
+        btnJugar.disabled=true;
+        cargarPuntuacion();
+        cargarOperacion();
+        
+        btnComprobar.onclick=puntuaje;
     
-    btnComprobar.onclick=puntuaje;
-
-    btnParar.onclick=parar;
-
-    contador=setInterval(accion,1000);
-    function accion(){
-        //console.log(tiempo);
-        mostrarTiempo();
-        tiempo--;
-        if(tiempo==0){
-            btnComprobar.disabled=true;
-            btnJugar.disabled=false;
-            btnParar.disabled=true;
-            alert("FIN DEL JUEGO");
-            clearInterval(contador);
+        btnParar.onclick=parar;
+    
+        contador=setInterval(accion,1000);
+        function accion(){
+            //console.log(tiempo);
+            mostrarTiempo();
+            tiempo--;
+            if(tiempo==0){
+                btnComprobar.disabled=true;
+                btnJugar.disabled=false;
+                btnParar.disabled=true;
+                alert("FIN DEL JUEGO");
+                clearInterval(contador);
+            }
+        }
+    
+    
+    }
+    
+    function cargarOperacion(){
+        console.log("CargarInfo");
+    
+        let num1=Math.round(Math.random()*50);
+        let oper=Math.round(Math.random()*3);
+        let num2;
+        do{
+            num2=Math.round(Math.random()*50);
+        }while(num2 == 0);
+    
+        op.textContent = num1 + " " + operacion[oper] + " " + num2;
+    
+        if(oper==0){
+            final=num1+num2;
+        } else if(oper==1){
+            final=num1-num2;
+        } else if(oper==2){
+            final=num1*num2;
+        } else{
+            final=num1/num2;
         }
     }
-
-
-}
-
-function cargarOperacion(){
-    console.log("CargarInfo");
-
-    let num1=Math.round(Math.random()*50);
-    let oper=Math.round(Math.random()*3);
-    let num2;
-    do{
-        num2=Math.round(Math.random()*50);
-    }while(num2 == 0);
-
-    op.textContent = num1 + " " + operacion[oper] + " " + num2;
-
-    if(oper==0){
-        final=num1+num2;
-    } else if(oper==1){
-        final=num1-num2;
-    } else if(oper==2){
-        final=num1*num2;
-    } else{
-        final=num1/num2;
+    
+    function mostrarTiempo(){
+        temp.textContent= "Tiempo: " + tiempo;
     }
-}
-
-function mostrarTiempo(){
-    temp.textContent= "Tiempo: " + tiempo;
-}
-
-function puntuaje(){
-    var texto = resul.value;
-    console.log(final);
-    console.log(texto);
-    if(texto==final){
-        aciertos++;
-        cargarOperacion();
-        cargarPuntuacion();
-    }else{
-        fallos++;
-        cargarPuntuacion();
+    
+    function puntuaje(){
+        var texto = resul.value;
+        console.log(final);
+        console.log(texto);
+        if(texto==final){
+            aciertos++;
+            cargarOperacion();
+            cargarPuntuacion();
+        }else{
+            fallos++;
+            cargarPuntuacion();
+        }
     }
+    
+    function parar(){
+        btnComprobar.disabled=true;
+        btnJugar.disabled=false;
+        btnParar.disabled=true;
+        alert("FIN FORZADO");
+        clearInterval(contador);
+    }
+    
+    function cargarPuntuacion(){
+        puntuacion.textContent= "Aciertos: " + aciertos + " --- Fallos: " + fallos;
+    }
+
 }
 
-function parar(){
-    btnComprobar.disabled=true;
-    btnJugar.disabled=false;
-    btnParar.disabled=true;
-    alert("FIN FORZADO");
-    clearInterval(contador);
-}
-
-function cargarPuntuacion(){
-    puntuacion.textContent= "Aciertos: " + aciertos + " --- Fallos: " + fallos;
-}

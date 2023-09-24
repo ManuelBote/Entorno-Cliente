@@ -44,66 +44,67 @@ function inicio(){
 
     btnJugar.onclick=jugar;
 
-}
-
-function jugar(){
-    console.log("entrando en jugar");
-    contadorSeg = 30;
-    puntos = 0;
-    btnJugar.disabled=true;
-    cargarInfo();
-    cargarColoresJuegos();
-
-    //temporizador
-    tiempo=setInterval(accion,1000);
-    function accion(){
-        if (contadorSeg == 0){
-            cargarInfo();
-            limpiardivs();
-            alert("Fin de partida");
-            btnJugar.disabled=false;
-            clearInterval(tiempo);
-        } else {
-            cargarInfo();
-            if(contadorSeg%5==0) cargarColoresJuegos();
+    function jugar(){
+        console.log("entrando en jugar");
+        contadorSeg = 30;
+        puntos = 0;
+        btnJugar.disabled=true;
+        cargarInfo();
+        cargarColoresJuegos();
+    
+        //temporizador
+        tiempo=setInterval(accion,1000);
+        function accion(){
+            if (contadorSeg == 0){
+                cargarInfo();
+                limpiardivs();
+                alert("Fin de partida");
+                btnJugar.disabled=false;
+                clearInterval(tiempo);
+            } else {
+                cargarInfo();
+                if(contadorSeg%5==0) cargarColoresJuegos();
+            }
+            contadorSeg--;
         }
-        contadorSeg--;
+    
+    }
+    
+    function cargarInfo(){
+        spPuntos.textContent= "Puntos: " + puntos + " --- Tiempo: " + contadorSeg;
+    
+    }
+    
+    function cargarColoresJuegos(){
+        let arrayCajasJuego = document.getElementsByName("cajasJuego");
+        //foreach
+        arrayCajasJuego.forEach(function(item,posicion){
+            let num1 = Math.round(Math.random()*4);
+            let num2 = Math.round(Math.random()*4);
+    
+            item.style.backgroundColor=colores[num1];
+            item.textContent=nombres[num2];
+    
+            item.onclick=comprobar;
+            function comprobar(){
+                if(num1==num2){
+                    puntos++;
+                    item.onclick=function(){};
+                }else{
+                    puntos--;
+                }
+            }
+            
+        });
+    }
+    
+    function limpiardivs(){
+        let arrayCajasJuego = document.getElementsByName("cajasJuego");
+        arrayCajasJuego.forEach(function(item,posicion){
+            item.onclick=function(){};
+    
+        });
     }
 
 }
 
-function cargarInfo(){
-    spPuntos.textContent= "Puntos: " + puntos + " --- Tiempo: " + contadorSeg;
-
-}
-
-function cargarColoresJuegos(){
-    let arrayCajasJuego = document.getElementsByName("cajasJuego");
-    //foreach
-    arrayCajasJuego.forEach(function(item,posicion){
-        let num1 = Math.round(Math.random()*4);
-        let num2 = Math.round(Math.random()*4);
-
-        item.style.backgroundColor=colores[num1];
-        item.textContent=nombres[num2];
-
-        item.onclick=comprobar;
-        function comprobar(){
-            if(num1==num2){
-                puntos++;
-                item.onclick=function(){};
-            }else{
-                puntos--;
-            }
-        }
-        
-    });
-}
-
-function limpiardivs(){
-    let arrayCajasJuego = document.getElementsByName("cajasJuego");
-    arrayCajasJuego.forEach(function(item,posicion){
-        item.onclick=function(){};
-
-    });
-}
