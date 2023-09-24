@@ -1,39 +1,47 @@
 window.onload=inicio;
 
 let btnJugar=document.getElementById("jugar");
-let caja=document.getElementById("cajaPadre");
+const caja=document.getElementById("cajaPadre");
 let puntos=document.getElementById("sppuntos");
 
 
 function inicio(){
 
-    let foto=document.createElement("img");
-
-    for(let i = 0; i<5; i++){
-        let divs=document.createElement("img");
-        divs.className="cajas";
-        divs.setAttribute("Name","imagen");
-        caja.appendChild("divs");
-    }
-
     btnJugar.onclick=jugar
 
-    function jugar(){
+    function jugar(){ 
+        console.log("Entrando en jugar");
 
-        cargarImagenes();
+        caja.innerHTML = "";
 
-    }
-
-
-    function cargarImagenes(){
-
-        let totalCajas = document.getElementsByName("cajas");
-        //const = [];
+        let totalCajas = document.getElementsByName("imagen");
+        const numeros = [];
 
         for(let i = 0;i<5;i++){
-            let num = Math.round(Math.random()*19);
+            let foto=document.createElement("img");
+            caja.appendChild(foto);
 
+            let num = Math.round(Math.random()*19);
+            numeros[i]=num;
+
+            //let src = "img/"+num+".jpg";
+            foto.src= "img/"+num+".jpg";
         }
+
+
+        if(numeros[0]==numeros[1] || numeros[0]==numeros[2] || numeros[0]==numeros[3] || numeros[0]==numeros[4]){
+            puntos.textContent="HAY REPETIDAS";
+         }else if(numeros[1]==numeros[2] || numeros[1]==numeros[3] || numeros[1]==numeros[4] || numeros[1]==numeros[0]){
+            puntos.textContent="HAY REPETIDAS";
+         }else if(numeros[2]==numeros[1] || numeros[2]==numeros[3] || numeros[2]==numeros[4] || numeros[2]==numeros[0]){
+            puntos.textContent="HAY REPETIDAS";
+         }else if(numeros[3]==numeros[1] || numeros[3]==numeros[2] || numeros[3]==numeros[4] || numeros[3]==numeros[0]){
+            puntos.textContent="HAY REPETIDAS";
+         }else if(numeros[4]==numeros[1] || numeros[4]==numeros[2] || numeros[4]==numeros[3] || numeros[4]==numeros[0]){
+            puntos.textContent="HAY REPETIDAS";
+         }else{
+            puntos.textContent="NO HAY REPETIDAS";
+         }
 
     }
 }
