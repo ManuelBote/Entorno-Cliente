@@ -2,6 +2,7 @@ window.onload=inicio;
 
 function inicio(){
 
+    //Variables de HTML
     let btn=document.getElementById("mostrarJS");
     let cajaPadre=document.getElementsByClassName("container");
     let imagenes=document.getElementById("cajaImagenes");
@@ -17,7 +18,6 @@ function inicio(){
             
 
             let caja=document.createElement("img");
-            //caja.className("gallery img");
 
             let num;
 
