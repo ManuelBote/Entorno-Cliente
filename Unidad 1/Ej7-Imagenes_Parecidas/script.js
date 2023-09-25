@@ -25,7 +25,7 @@ function inicio(){
             numeros[i]=num;
 
             //let src = "img/"+num+".jpg";
-            foto.src= "img/"+num+".jpg";
+            foto.src= "img/"+num+".JPG";
         }
 
 
