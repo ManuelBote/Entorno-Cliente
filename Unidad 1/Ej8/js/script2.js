@@ -9,6 +9,7 @@ function inicio(){
 
     btn.onclick=generar;
 
+    //Crear otros elementos 
     let caja2=document.createElement("fieldset");
     caja2.className="gallery";
     caja2.style.border="1px solid black";
