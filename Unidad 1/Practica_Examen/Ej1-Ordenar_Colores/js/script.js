@@ -64,11 +64,47 @@ function inicio(){
         let caja=document.createElement("div");
         caja.className="gallery img";
         caja.style.backgroundColor=colores[numR];
+        caja.style.minWidth="25%";
         caja.textContent=coloresT[numR];
 
-        cajas.push[caja];
+        console.log(caja);
+
+        cajas[i]=caja;
+
+        console.log(cajas);
 
         contenedor2.appendChild(caja);
+    }
+
+    btn.onclick=mover;
+
+    function mover(){
+
+        console.log("Click en boton"); 
+        console.log(cajas); 
+
+        cajas.forEach(accion);
+
+        function accion(item, indice){
+            switch(item.style.backgroundColor){
+                case "blue":
+                    contenedorB.appendChild(item);
+                    break;
+
+                case "red":
+                    contenedorR.appendChild(item);
+                break;
+
+                case "green":
+                    contenedorG.appendChild(item);
+                    break;
+
+                case "orange":
+                    contenedorO.appendChild(item);
+                    break;
+            }
+        }
+
     }
 
 
