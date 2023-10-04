@@ -1,3 +1,11 @@
+//Errores solucionados:
+  //Al pulsar las dos imagenes podias seguir pulsando mas y se quedaban mostradas
+  //Podias volver a pulsar la imagen que ya habias acertado y quitar la imagen de acierto o sumarte puntos
+  //La segunda imagen no se mostraba porque desaparecia instantaneamente
+
+//Errores por solucionar:
+  //Puedes pulsar la misma imagen 2 veces para conseguir puntos
+
 window.addEventListener('load', inicio);
 const ArrayImagenes = ['img/0.JPG','img/1.JPG','img/2.JPG','img/3.JPG','img/4.JPG','img/5.JPG','img/6.JPG','img/7.JPG','img/ok.png'];
 //array con 16 números enteros entre 0 y 7
