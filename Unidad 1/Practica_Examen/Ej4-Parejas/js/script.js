@@ -8,8 +8,8 @@
 
 window.addEventListener('load', inicio);
 const ArrayImagenes = ['img/0.JPG','img/1.JPG','img/2.JPG','img/3.JPG','img/4.JPG','img/5.JPG','img/6.JPG','img/7.JPG','img/ok.png'];
-//array con 16 números enteros entre 0 y 7
 
+//array con 16 números enteros entre 0 y 7
 const ArrayFinal=[];
 
   function inicio(){
