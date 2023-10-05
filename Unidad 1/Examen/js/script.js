@@ -1,3 +1,4 @@
+//Manuel Bote Zabala
 window.onload=inicio;
 
 let cuerpo=document.querySelector("body");
