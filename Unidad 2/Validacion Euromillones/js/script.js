@@ -1,57 +1,80 @@
-window.onload=inicio;
+let accion = document.getElementById("validar");
 
-function inicio(){
-    let formulario=document.getElementById("validar");
-    console.log(formulario);
-    formulario.onsubmit=validaciones;
+let bool = true;
 
-    function validaciones(){
-        console.log("Entrar en validar");
-        alert("validando");
-        let n1=document.getElementById("idNumero1");
-        let sm1=document.getElementById("smNumero1");
+accion.onsubmit = function () {
+  bool = true;
 
-        let n2=document.getElementById("idNumero2");
-        let sm2=document.getElementById("smNumero2");
+  //Declaramos el valor que tenga el input y el small para el mensaje de error
+  let n1 = document.getElementById("idNumero1").value;
+  let smNum1 = document.getElementById("smNumero1");
 
-        let n3=document.getElementById("idNumero3");
-        let sm3=document.getElementById("smNumero3");
+  let n2 = document.getElementById("idNumero2").value;
+  let smNum2 = document.getElementById("smNumero2");
 
-        let n4=document.getElementById("idNumero4");
-        let sm4=document.getElementById("smNumero4");
+  let n3 = document.getElementById("idNumero3").value;
+  let smNum3 = document.getElementById("smNumero3");
 
-        let n5=document.getElementById("idNumero5");
-        let sm5=document.getElementById("smNumero5");
+  let n4 = document.getElementById("idNumero4").value;
+  let smNum4 = document.getElementById("smNumero4");
 
-        let n6=document.getElementById("idNumero6");
-        let sm6=document.getElementById("smNumero6");
+  let n5 = document.getElementById("idNumero5").value;
+  let smNum5 = document.getElementById("smNumero5");
 
-        let array=[n1,n2,n3,n4,n5,n6];
-        let bool_repetido=false;
+  let n6 = document.getElementById("idNumero6").value;
+  let smNum6 = document.getElementById("smNumero6");
 
-        let smRepetido=document.getElementById("smValidar");
+  //Validamos:
+  //  1º Que no esté vacío.
+  //  2º Que sea un número.
+  //  3º Que sea un número entero.
+  //  4º Que esté comprendido entre 1 y 50.
+  //  Si no hay errores se limpia el elemento small.
 
-        for(let i=0;i<array.length;i++){
-            for(let j=0;j<array.length;j++){
-                if(array[i]==array[j] && i!=j){
-                    bool_repetido=true;
-                }
-            }
-        }
+  validaciones(n1, smNum1);
+  validaciones(n2, smNum2);
+  validaciones(n3, smNum3);
+  validaciones(n4, smNum4);
+  validaciones(n5, smNum5);
+  validaciones(n6, smNum6);
 
-        if(bool_repetido){
-            smRepetido.innerHTML="Error, numero repetido"
-        }
+  let arrayNumeros = [n1, n2, n3, n4, n5, n6];
+  let arrayComparados = [];
+  let smDupl = document.getElementById("smDuplicados");
+  let bool2 = true;
 
-        validar(n1, sm1);
-        validar(n2, sm2);
-        validar(n3, sm3);
-        validar(n4, sm4);
-        validar(n5, sm5);
-        validar(n6, sm6);
-
-        function validar(num, sm){
-
-        }
+  for (let i = 0; i < arrayNumeros.length; i++) {
+    if (arrayComparados.includes(arrayNumeros[i])) {
+      bool2 = false;
+    } else {
+      arrayComparados.push(arrayNumeros[i]);
     }
+  }
+
+  if (bool2) {
+    smDupl.innerHTML = "";
+  } else {
+    bool = false;
+    smDupl.innerHTML = "** ERROR NÚMEROS DUPLICADOS";
+  }
+
+  return bool;
+};
+
+function validaciones(num, sm) {
+  if (num == "") {
+    sm.innerHTML = "* Campo obligatorio.";
+    bool = false;
+  } else if (isNaN(num)) {
+    sm.innerHTML = "* Introduce un número.";
+    bool = false;
+  } else if (!Number.isInteger(Number(num))) {
+    sm.innerHTML = "* Introduce un número entero.";
+    bool = false;
+  } else if (num < 1 || num > 50) {
+    sm.innerHTML = "* Número fuera del rango (0-50).";
+    bool = false;
+  } else {
+    sm.innerHTML = "";
+  }
 }
