@@ -43,6 +43,25 @@ function validacion1(texto, sm) {
     sm.innerHTML = "* La cadena debe tener entre 5 y 15 caracteres.";
     bool = false;
   }
+  var i = 0;
+  var caracter = "";
+  var comprobar1 = false;
+  var comprobar2 = false;
+  while (i <= cadena.length || (comprobar1 && comprobar2)) {
+    caracter = strings.charAt(i);
+    if (!isNaN(caracter * 1)) {
+      comprobar1 = true;
+    } else {
+      if (caracter == caracter.toUpperCase()) {
+        comprobar2 = true;
+      }
+    }
+    i++;
+  }
+  if(!comprobar1 && !comprobar2){
+    sm.innerHTML = "* La cadena debe contener un numero y una mayuscula.";
+    bool=false;
+  }
 }
 
 function validacion2(texto, sm) {
@@ -53,6 +72,20 @@ function validacion2(texto, sm) {
   let longitud = String(texto).length;
   if (longitud <= 20 || longitud >= 30) {
     sm.innerHTML = "* La cadena debe tener entre 20 y 30 caracteres.";
+    bool = false;
+  }
+  var i = 0;
+  var caracter = "";
+  var comprobar=0;
+  while (i <= cadena.length) {
+    caracter = strings.charAt(i);
+    if (caracter== '@') {
+      comprobar++;
+    }
+    i++;
+  }
+  if(comprobar!=1){
+    sm.innerHTML = "* La cadena debe tener un unico '@'.";
     bool = false;
   }
 }
