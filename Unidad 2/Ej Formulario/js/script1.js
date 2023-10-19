@@ -56,17 +56,28 @@ function validacion2(texto, sm) {
     sm.innerHTML = "* Campo obligatorio.";
     bool = false;
   }
-  let longitud=String(texto).length;
-  if(longitud<=3 || longitud>=15){
+  let longitud = String(texto).length;
+  if (longitud <= 3 || longitud >= 15) {
     sm.innerHTML = "* La cadena no puee tener esa cantidad caracteres (3-15).";
     bool = false;
   }
 }
 
-function validacion3(texto, sm) {
-  if (texto == "") {
+function validacion3(num, sm) {
+  if (num == "") {
     sm.innerHTML = "* Campo obligatorio.";
     bool = false;
+  } else if (isNaN(num)) {
+    sm.innerHTML = "* Introduce un número.";
+    bool = false;
+  } else if (!Number.isInteger(Number(num))) {
+    sm.innerHTML = "* Introduce un número entero.";
+    bool = false;
+  } else if (num < -10 || num > 10) {
+    sm.innerHTML = "* Número fuera del rango (-10-10).";
+    bool = false;
+  } else {
+    sm.innerHTML = "";
   }
 }
 
@@ -75,4 +86,84 @@ function validacion4(texto, sm) {
     sm.innerHTML = "* Campo obligatorio.";
     bool = false;
   }
+  let cadena = String(texto);
+  cadena.toLowerCase;
+  let comprobar1 = false;
+  let comprobar2 = false;
+  let comprobar3 = false;
+  let contB = 0;
+  for (let i = 0; i < cadena.length; i++) {
+    letra = cadena.charAt(i);
+    if (letra == "a") {
+      comprobar1 = true;
+    } else if (letra == "e") {
+      comprobar2 = true;
+    } else if (letra == "o") {
+      comprobar3 = true;
+    } else if (letra == "b"){
+      contB++;
+    }
+  }
+  let frase = "";
+  if (!comprobar1 || !comprobar2 || !comprobar3 || contB<3) {
+    if (!comprobar1) {
+      frase += "* No existe la letra 'a'* ";
+    }
+    if (!comprobar2) {
+      frase += "* No existe la letra 'e'* ";
+    }
+    if (!comprobar3) {
+      frase += "* No existe la letra 'o'* ";
+    }
+    if(contB<3){
+      frase+="* Solo has puesto "+contB+" 'b' de 3* ";
+    }
+    sm.innerHTML = frase;
+    bool = false;
+  }
 }
+
+// function validacion4(texto, sm) {
+//   if (texto == "") {
+//     sm.innerHTML = "* Campo obligatorio.";
+//     bool = false;
+//   }
+//   let cadena = String(texto);
+//   cadena.toLowerCase;
+//   let contA = 0;
+//   let contE = 0;
+//   let contO = 0;
+//   let contB = 0;
+//   for(let i=0; i<cadena.length;i++){
+//     let letra = cadena.charAt(i);
+//     if(letra=="a"){
+//       contA++;
+//     }
+//     if(letra=="e"){
+//       contE++;
+//     }
+//     if(letra=="o"){
+//       contO++;
+//     }
+//     if(letra=="b"){
+//       contB++;
+//     }
+//   }
+//   if(contA<3 || contE<3 || contO<3 || contB<3){
+//     frase="";
+//     if(contA<3){
+//       frase+="* Faltan 'a'* ";
+//     }
+//     if(contE<3){
+//       frase+="* Faltan 'e'* ";
+//     }
+//     if(contO<3){
+//       frase+="* Faltan 'o'* ";
+//     }
+//     if(contB<3){
+//       frase+="* Faltan 'b'* ";
+//     }
+//     sm.innerHTML=frase;
+//     bool = false;
+//   }
+// }

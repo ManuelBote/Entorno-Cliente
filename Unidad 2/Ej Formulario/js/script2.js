@@ -34,60 +34,43 @@ accion.onsubmit = function () {
 };
 
 function validacion1(texto, sm) {
+  let cadena = String(texto);
   if (texto == "") {
     sm.innerHTML = "* Campo obligatorio.";
     bool = false;
-  }
-  let longitud = String(texto).length;
-  if (longitud <= 5 || longitud >= 15) {
+  } else if (cadena.length < 5 || cadena.length > 15) {
     sm.innerHTML = "* La cadena debe tener entre 5 y 15 caracteres.";
     bool = false;
-  }
-  var i = 0;
-  var caracter = "";
-  var comprobar1 = false;
-  var comprobar2 = false;
-  while (i <= cadena.length || (comprobar1 && comprobar2)) {
-    caracter = strings.charAt(i);
-    if (!isNaN(caracter * 1)) {
-      comprobar1 = true;
-    } else {
-      if (caracter == caracter.toUpperCase()) {
-        comprobar2 = true;
-      }
-    }
-    i++;
-  }
-  if(!comprobar1 && !comprobar2){
-    sm.innerHTML = "* La cadena debe contener un numero y una mayuscula.";
-    bool=false;
+  } else if (!/[A-Z]/.test(cadena) || !/\d/.test(cadena)) {
+    sm.innerHTML = "* La cadena debe contener un numero y una mayuscula.*";
+    bool = false;
+  } else{
+    sm.innerHTML="";
   }
 }
 
 function validacion2(texto, sm) {
-  if (texto == "") {
-    sm.innerHTML = "* Campo obligatorio.";
-    bool = false;
-  }
-  let longitud = String(texto).length;
-  if (longitud <= 20 || longitud >= 30) {
-    sm.innerHTML = "* La cadena debe tener entre 20 y 30 caracteres.";
-    bool = false;
-  }
-  var i = 0;
-  var caracter = "";
-  var comprobar=0;
-  while (i <= cadena.length) {
-    caracter = strings.charAt(i);
-    if (caracter== '@') {
+  let cadena = String(texto);
+  let comprobar = 0;
+  for (let i = 0; i < cadena.length; i++) {
+    letra = cadena.charAt(i);
+    if (letra == "@") {
       comprobar++;
     }
-    i++;
   }
-  if(comprobar!=1){
-    sm.innerHTML = "* La cadena debe tener un unico '@'.";
-    bool = false;
-  }
+
+    if (texto == "") {
+      sm.innerHTML = "* Campo obligatorio.";
+      bool = false;
+    } else if (cadena.length <= 20 || cadena.length >= 30) {
+      sm.innerHTML = "* La cadena debe tener entre 20 y 30 caracteres.";
+      bool = false;
+    } else if (comprobar != 1) {
+      sm.innerHTML = "* La cadena debe tener un unico '@'.*";
+      bool = false;
+    } else{
+      sm.innerHTML="";
+    }
 }
 
 function validacion3(num, sm) {
