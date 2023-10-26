@@ -47,19 +47,19 @@ function inicio(){
             let cadena=String(exp);
             if(cadena.length!=6){
                 bool=false
-                smExp.innerHTML="*Cadena no valida";
+                smExp.innerHTML="*Cadena no valida, el mensaje debe tener 6 caracteres";
             } else{
                 for(let i; i<cadena.length-1; i++){
                     let caracter = cadena.charAt(i);
                     if(!/\d/.test(caracter)){
                         bool=false;
-                        smExp.innerHTML="*Cadena no valida";
+                        smExp.innerHTML="*Cadena no valida, debe tener 5 numeros";
                     }
                 }
                 let caracter=cadena.charAt(cadena.length-1);
-                if(!/[A-Z]/.test(caracter)){
+                if(!/[A-Z]/.test(caracter) && bool!=false){
                     bool=false;
-                    smExp.innerHTML="*Cadena no valida";
+                    smExp.innerHTML="*Cadena no valida, ultimo caracter letra mayuscula";
                 }
                 if(dwec<0 || dwec>10 || dwes<0 || dwes>10 || ds<0 || ds>10 || eie<0 || eie>10 || diw<0 || diw>10){
                     bool=false;
