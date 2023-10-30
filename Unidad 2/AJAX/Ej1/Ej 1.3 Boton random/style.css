@@ -1,0 +1,24 @@
+.contenedor {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .card {
+    margin: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+  } 
+  .card video {
+    width: 100%;
+  }
+  .card .info {
+    padding: 20px 10px
+  }
+   button {
+    background: lightcoral;
+    border: 2px solid lightskyblue;
+   
+    padding: 10px;
+    width: 100%;
+    }

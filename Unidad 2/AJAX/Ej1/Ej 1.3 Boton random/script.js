@@ -3,7 +3,6 @@ window.onload=inicio;
 function inicio(){
     let btn = document.getElementById("mostrar");
     btn.onclick= Mostrar;
-
 }
 
 function Mostrar(){
@@ -15,18 +14,23 @@ function Mostrar(){
             //Aceso al fichero y servidor abierto
             //Averiguar formato de los datos para hacer el parseo
             var objeto=JSON.parse(this.responseText);
-            let idFila=document.getElementById("fila");
-            objeto.forEach(recorrer);
+            let caja = document.getElementById("caja");
+            caja.innerHTML="";
 
-            function recorrer(item, index){
-                //console.log(item.url);
-                let divX = document.createElement("div");
-                divX.className="col-lg-3";
-                divX.innerHTML="<video src='"+item.url+"' width='200' height='100' autoplay loop></video>";
-                idFila.appendChild(divX);
-            }
+            let text = document.createElement("div");
+            text.className="info";
+            let img = document.createElement("div");
+
+            let num = Math.floor(Math.random()*7);
+            //console.log(num);
+
+            text.innerHTML=objeto[num].id;
+            img.innerHTML="<video src='"+objeto[num].url+"' autoplay loop>";
+
+            caja.appendChild(text);
+            caja.appendChild(img);
         }
     }
-    xhr.open("GET", "http://camacho.atwebpages.com/webcam/getWebcam.php", true);
+    xhr.open("GET", "fichero.json", true);
     xhr.send();
 }
