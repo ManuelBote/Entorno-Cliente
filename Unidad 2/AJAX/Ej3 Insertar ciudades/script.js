@@ -4,6 +4,8 @@ function inicio(){
 
     document.getElementById("btnInsertar").addEventListener("click", insertarCiudades);
     document.getElementById("btnMostrar").addEventListener("click", mostrar);
+    document.getElementById("btnBorrar").addEventListener("click", borrar);
+
 
 }
 
@@ -45,7 +47,7 @@ function mostrar(){
             objeto.forEach(recorrer);
             
             function recorrer(dato, indice){
-                BloqueHtml.innerHTML+="<div class='row d-flex justify-content-center'>"+
+                BloqueHtml.innerHTML+="<div class='row d-flex justify-content-center border'>"+
                 "<div class='col-lg-2'>"+ dato.id+"</div>"+
                 "<div class='col-lg-2'>"+ dato.nombre+"</div>"+
                 "<div class='col-lg-2'>"+ dato.poblacion+"</div>"+
@@ -60,4 +62,18 @@ function mostrar(){
 
     xhr.open("POST", "http://moralo.atwebpages.com/menuAjax/ciudades/getCiudades.php", true);
     xhr.send();
+}
+
+function borrar(){
+    var id= document.querySelector("#_id").value;
+
+    $.ajax({
+        url: "http://moralo.atwebpages.com/menuAjax/ciudades/EliminarCiudades.php",
+        type: "POST",
+        data:{
+            id:id
+        }
+    });
+
+    mostrar();
 }
