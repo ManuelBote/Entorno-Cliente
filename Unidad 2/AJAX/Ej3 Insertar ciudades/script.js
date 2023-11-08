@@ -4,7 +4,7 @@ function inicio(){
 
     document.getElementById("btnInsertar").addEventListener("click", insertarCiudades);
     document.getElementById("btnMostrar").addEventListener("click", mostrar);
-    document.getElementById("btnBorrar").addEventListener("click", borrar);
+    $("#exampleModal").on("hidden.bs.modal", borrar);
 
 
 }
@@ -65,7 +65,7 @@ function mostrar(){
 }
 
 function borrar(){
-    var id= document.querySelector("#_id").value;
+    var id= document.querySelector("#_idBorrar").value;
 
     $.ajax({
         url: "http://moralo.atwebpages.com/menuAjax/ciudades/EliminarCiudades.php",
