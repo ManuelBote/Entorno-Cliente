@@ -33,6 +33,7 @@ function insertarCiudades(){
 
 function mostrar(){
     var cajaMostrar = document.getElementById("CajaX");
+    cajaMostrar.innerHTML="";
     var BloqueHtml=document.createElement("div");
     BloqueHtml.innerHTML="";
     var xhr=new XMLHttpRequest;
