@@ -117,7 +117,7 @@ function cargarT(){
                             type: "POST",
                             data:{
                                 dni:dni
-                            },
+                            }
                         });
                         
                     
