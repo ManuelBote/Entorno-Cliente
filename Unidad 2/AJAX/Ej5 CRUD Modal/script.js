@@ -116,7 +116,7 @@ function cargarT(){
                             url: "http://moralo.atwebpages.com/menuAjax/clientes/eliminarClientes.php",
                             type: "POST",
                             data:{
-                                dni:dni
+                                id:dni
                             }
                         });
                         
