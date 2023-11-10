@@ -4,6 +4,7 @@ var tabla = document.querySelector("#cajaTabla");
 
 function inicio(){
 
+    //Boton añadir
     let btnI = document.querySelector("#botonAdd").addEventListener("click", function(){
         document.querySelector("#btnInsertar").disabled = false;
         document.querySelector("#btnModificar").disabled = true;
@@ -15,8 +16,10 @@ function inicio(){
         var telefono = document.querySelector("#Telefono").setAttribute("value", "");
     });
 
+    //Boton insertar (Modal)
     document.querySelector("#btnInsertar").addEventListener("click", insertarCLientes);
 
+    //Boton mostrar(A veces recarga tan rapido que no se guarda la modificacion realizada)
     let btnMostrar = document.querySelector("#btnMostrar").addEventListener("click", cargarT);
 
 
@@ -24,6 +27,7 @@ function inicio(){
 
 }
 
+//Funcion cargar de la tabla
 function cargarT(){
 
     tabla.innerHTML="";
@@ -49,6 +53,7 @@ function cargarT(){
 
             function recorrer(dato, indice) {
                 var fila = document.createElement("tr");
+                //Añadida de objetos
                 fila.innerHTML =
                     "<th scope='row'>" + dato.dni + "</th>" +
                     "<td>" + dato.nombre + "</td>" +
@@ -64,6 +69,7 @@ function cargarT(){
             
                 tabla.appendChild(fila);
             
+                //Boton modificar
                 let mod = fila.querySelector(".btnMod").addEventListener("click", function () {
                     document.querySelector("#btnInsertar").disabled = true;
                     document.querySelector("#btnModificar").disabled = false;
@@ -74,6 +80,7 @@ function cargarT(){
                     var apellido = document.querySelector("#Apellidos").setAttribute("value", dato.apellido);
                     var telefono = document.querySelector("#Telefono").setAttribute("value", dato.telefono);
 
+                    //Funcion de modificar
                     document.querySelector("#btnModificar").addEventListener("click", function(){
 
                         var dni= document.querySelector("#Dni").value;
@@ -96,8 +103,10 @@ function cargarT(){
                     })
                 });
 
+                //Boton de borrar
                 let borrar = fila.querySelector(".btnBorrar").addEventListener("click", function(){
                     let mBody = document.querySelector("#borrarBody").innerHTML= "¿Estás seguro de que desea borrar el cliente <b>"+dato.nombre+"</b> con dni: <b>" + dato.dni+"</b>?";
+                    //Funcion de borrar
                     document.querySelector("#borrarCliente").addEventListener("click", function(){
 
                         var dni= dato.dni;
@@ -125,6 +134,7 @@ function cargarT(){
     xhr.send();
 }
 
+//Funcion de insertar datos
 function insertarCLientes(){
     console.log("Entro en insertar clientes");
 
