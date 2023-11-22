@@ -112,7 +112,7 @@ function cargarT() {
                 var photo = document.querySelector("#URL").value;
 
                 $.ajax({
-                  url: "http://moralo.atwebpages.com/menuAjax/productos/update_product.php",
+                  url: "http://moralo.atwebpages.com/menuAjax/productos3/modificarProductos.php",
                   type: "POST",
                   data: {
                     id: id,
@@ -144,7 +144,7 @@ function cargarT() {
                 //console.log(dni);
 
                 $.ajax({
-                  url: "http://moralo.atwebpages.com/menuAjax/clientes/eliminarClientes.php",
+                  url: "http://moralo.atwebpages.com/menuAjax/productos3/eliminarProductos.php",
                   type: "POST",
                   data: {
                     id: id,
@@ -160,7 +160,7 @@ function cargarT() {
 
   xhr.open(
     "POST",
-    "http://moralo.atwebpages.com/menuAjax/productos3/modificarProductos.php",
+    "http://moralo.atwebpages.com/menuAjax/productos3/getProductos.php",
     true
   );
   xhr.send();
