@@ -160,7 +160,7 @@ function cargarT() {
 
   xhr.open(
     "POST",
-    "http://moralo.atwebpages.com/menuAjax/productos/index.php",
+    "http://moralo.atwebpages.com/menuAjax/productos3/modificarProductos.php",
     true
   );
   xhr.send();
@@ -176,7 +176,7 @@ function insertarCLientes() {
   var photo = document.querySelector("#URL").value;
 
   $.ajax({
-    url: "http://moralo.atwebpages.com/menuAjax/productos/create_product.php",
+    url: "http://moralo.atwebpages.com/menuAjax/productos3/insertarProductos.php",
     type: "POST",
     data: {
       id: id,

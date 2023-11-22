@@ -110,7 +110,7 @@ function cargarContenido() {
   };
   xhr.open(
     "GET",
-    "http://moralo.atwebpages.com/menuAjax/productos/index.php",
+    "http://moralo.atwebpages.com/menuAjax/productos3/getProductos.php",
     true
   );
   xhr.send();
