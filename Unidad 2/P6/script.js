@@ -25,25 +25,31 @@ function calculoNotas(){
 
         let mediaAlta = 0;
         let alumno;
+        let cont1 = 0;
+        let cont2 = 0;
+        let cont3 = 0;
 
             objeto.forEach(function(dato, indice){
 
                 let media = (parseInt(dato.nota1)+parseInt(dato.nota2)+parseInt(dato.nota3))/3;
-                
+
                 if(media > mediaAlta){
                     mediaAlta = media;
                     alumno = dato.alumno;
                 }
 
                 if(parseInt(dato.nota1)>=5 && parseInt(dato.nota2)>=5 && parseInt(dato.nota3)>= 5){
+                    cont1++;
                     alumnoAprovados.push(dato.alumno);
                 }
 
                 if(parseInt(dato.nota1)==parseInt(dato.nota2) && parseInt(dato.nota2)==parseInt(dato.nota3)){
+                    cont2++;
                     alumnoNotaIgual.push(dato.alumno);
                 }
 
                 if((parseInt(dato.nota1)<5 || parseInt(dato.nota2)<5 || parseInt(dato.nota3)< 5) && media>=5){
+                    cont3++;
                     alumnoMediaAprovada.push(dato.alumno);
                 }
 
@@ -51,9 +57,9 @@ function calculoNotas(){
             })
 
             caja1.textContent = alumno + ": " + mediaAlta;
-            caja2.textContent = alumnoAprovados;
-            caja3.textContent = alumnoNotaIgual;
-            caja4.textContent = alumnoMediaAprovada;
+            caja2.textContent = cont1 + ", " + alumnoAprovados;
+            caja3.textContent = cont2 + ", " + alumnoNotaIgual;
+            caja4.textContent = cont3 + ", " + alumnoMediaAprovada;
         }
     }
 
