@@ -1,0 +1,28 @@
+#contenido {
+    padding: 15px;
+  }
+
+  .equipo {
+    width: 200px;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .equipo img {
+    width: 100%;
+  }
+
+  .formularios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .error {
+    color: red;
+  }
+  .contenedor{
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center
+  }

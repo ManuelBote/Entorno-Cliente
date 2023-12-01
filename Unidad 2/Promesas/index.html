@@ -1,34 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Title</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deportes</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div id="contenido">
 
-  </head>
-  <body>
-    <div class="container">
+        <div class="formularios">
+    
+          <div class="form-group">
+            <label for="paises">Paises</label>
+            <select class="form-control" id="paises">
+            </select>
+          </div>
+    
+          <div class="form-group">
+            <label for="deportes">Deportes</label>
+            <select class="form-control" id="deportes">
+            </select>
+          </div>
 
-      <div>
-        <label for="Paises">Pais: </label>
-        <select name="paises" id="Paises"></select>
+          <br>
+
+          <div class="form-group">
+            <input type="submit" id="mostrar" value="Mostrar Equipos">
+          </div>
+        </div>
+    
+        <div id="equipos" class="contenedor"></div>
       </div>
-        
-        <br>
-
-      <div>
-        <label for="Deporte">Deporte: </label>
-        <select name="deporte" id="Deporte">
-          <option value="Soccer">Futbol</option>
-          <option value="Basketball">Baloncesto</option>
-          <option value="VolleyBall">VolleyBall</option>
-          <option value="Rugby">Rugby</option>
-          <option value="HandBall">BalonMano</option>
-        </select>
-      </div>
-      
-    </div>
-      
-    <script src="script.js"></script>
-  </body>
+</body>
+<script src="script.js"></script>
 </html>
