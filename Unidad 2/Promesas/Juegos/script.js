@@ -55,11 +55,51 @@ let body = document.querySelector("tbody");
 
 function inicio() {
     agregarGeneros();
+    btn.onclick=mostrarJuegos();
 }
 
 function agregarGeneros(){
     for(let i = 0; i< GENEROS.length; i++){
         select.innerHTML+=
             `<option value="${GENEROS[i]}">${GENEROS[i]}</option>`;
+    }
+}
+
+function mostrarJuegos(){
+    head.innerHTML='<tr>'+
+        '<th scope="col">Juego</th>'+
+        '<th scope="col">Imagen</th>'+
+        '<th scope="col">Pagina</th>'+
+        '</tr>';
+    body.innerHTML="";
+    obtenerJuegos();
+
+}
+
+
+async function obtenerJuegos(){
+    const url = "https://www.freetogame.com/api/games?category="+select.value;
+    var headers= {};
+
+    const objeto = await fetch(url, {
+        method:"GET",
+        mode:"cors",
+        headers:headers
+    });
+
+    try{
+        const data = await objeto.json();
+        for(let i = 0;i < data.length; i++){
+            body.innerHTML+=
+            '<tr>'+
+            '<td>'+data.title+'</td>'+
+            '<td><img src="'+data.thumbnail+'"></td>'+
+            '<td><iframe src="'+data.freetogame_profile_url+'"></td>'+
+            '</tr>';
+        }
+    }
+    
+    catch(error){
+        alert(error);
     }
 }
